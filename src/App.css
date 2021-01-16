@@ -1,38 +1,123 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  background: #333;
+  display: grid;
+  place-items: center;
+}
+.box-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  height: 200px;
+}
+.box {
+  height: 100px;
+  width: 50px;
+  background: gold;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-size: 3em;
 }
 
-.App-link {
-  color: #61dafb;
+.box + .box {
+  margin-left: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.right.prev {
+  animation: rightRotateToActive 0.5s linear forwards;
+}
+
+.right.next {
+  animation: rightRotateNext 0.5s linear forwards;
+}
+
+.box.active.right {
+  animation: rightRotateOffActive 0.5s linear forwards;
+}
+.left.prev {
+  animation: leftRotateToActive 0.5s linear forwards;
+}
+.left.next {
+  animation: leftRotateNext 0.5s linear forwards;
+}
+
+.left.box.box.active {
+  animation: leftRotateOffActive 0.5s linear forwards;
+}
+
+.box.active {
+  background-color: red;
+  height: 200px;
+  width: 100px;
+}
+
+@keyframes rightRotateOffActive {
+  0% {
+    transform: translateX(-130px);
+    height: 100px;
+    width: 50px;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: translateX(0);
+    height: 200px;
+    width: 100px;
+  }
+}
+
+@keyframes rightRotateNext {
+  0% {
+    transform: translateX(-130px);
+    height: 200px;
+    width: 100px;
+  }
+  100% {
+    transform: translateX(0);
+    height: 100px;
+    width: 50px;
+  }
+}
+
+@keyframes rightRotateToActive {
+  0% {
+    transform: translateX(-130px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes leftRotateOffActive {
+  0% {
+    transform: translateX(130px);
+    height: 100px;
+    width: 50px;
+  }
+  100% {
+    transform: translateX(0);
+    height: 200px;
+    width: 100px;
+  }
+}
+
+@keyframes leftRotateNext {
+  0% {
+    transform: translateX(130px);
+    height: 200px;
+    width: 100px;
+  }
+  100% {
+    transform: translateX(0);
+    height: 100px;
+    width: 50px;
+  }
+}
+
+@keyframes leftRotateToActive {
+  0% {
+    transform: translateX(130px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
