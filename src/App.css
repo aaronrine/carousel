@@ -1,6 +1,10 @@
+body {
+  perspective: 800px;
+}
+
 .App {
   min-height: 100vh;
-  background: #333;
+  background: #eee;
   display: grid;
   place-items: center;
 }
@@ -8,19 +12,27 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 200px;
 }
 .box {
-  height: 100px;
-  width: 50px;
-  background: gold;
+  height: 200px;
+  width: 100px;
+  background: red;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3em;
+  -webkit-box-reflect: below 10px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
 }
 
+.next {
+  transform: rotateY(-45deg);
+}
+
+.prev {
+  transform: rotateY(45deg);
+}
 .box + .box {
   margin-left: 30px;
 }
@@ -47,69 +59,47 @@
   animation: leftRotateOffActive 0.5s linear forwards;
 }
 
-.box.active {
-  background-color: red;
-  height: 200px;
-  width: 100px;
-}
-
 @keyframes rightRotateOffActive {
   0% {
-    transform: translateX(-130px);
-    height: 100px;
-    width: 50px;
+    transform: translateX(-130px) rotateY(45deg);
   }
   100% {
-    transform: translateX(0);
-    height: 200px;
-    width: 100px;
+    transform: translateX(0) rotateY(0);
   }
 }
 
 @keyframes rightRotateNext {
   0% {
     transform: translateX(-130px);
-    height: 200px;
-    width: 100px;
   }
   100% {
-    transform: translateX(0);
-    height: 100px;
-    width: 50px;
+    transform: translateX(0) rotateY(-45deg);
   }
 }
 
 @keyframes rightRotateToActive {
   0% {
-    transform: translateX(-130px);
+    transform: translateX(-130px) rotateY(80deg);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) rotateY(45deg);
   }
 }
 @keyframes leftRotateOffActive {
   0% {
-    transform: translateX(130px);
-    height: 100px;
-    width: 50px;
+    transform: translateX(130px) rotateY(-45deg);
   }
   100% {
     transform: translateX(0);
-    height: 200px;
-    width: 100px;
   }
 }
 
 @keyframes leftRotateNext {
   0% {
-    transform: translateX(130px);
-    height: 200px;
-    width: 100px;
+    transform: translateX(130px) rotateY(-80deg);
   }
   100% {
-    transform: translateX(0);
-    height: 100px;
-    width: 50px;
+    transform: translateX(0) rotateY(-45deg);
   }
 }
 
@@ -118,6 +108,6 @@
     transform: translateX(130px);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) rotateY(45deg);
   }
 }
